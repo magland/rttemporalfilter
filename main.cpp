@@ -1,16 +1,21 @@
 #include <stdlib.h>
 #include <stdio.h>
 
+void usage() {
+    printf("Usage: rttemporalfilter [fname]\n");
+}
+
 int main(int argc, char *argv[])
 {
-    if (argc>=2) {
-        unsigned int num_channels=atoi(argv[1]);
-        fwrite(&num_channels,sizeof(unsigned int),1,stdout);
-        for (int i=0; i<num_channels; i++) {
-            float val=i;
-            fwrite(&val,sizeof(float),1,stdout);
-        }
+    if (argc<2) {
+        usage();
+        return 0;
     }
+    QString path=QString(argv[1]);
+
+
+
+
     else {
         int num_channels;
         fread(&num_channels,sizeof(unsigned int),1,stdin);

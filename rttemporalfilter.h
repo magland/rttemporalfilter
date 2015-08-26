@@ -8,9 +8,9 @@ public:
     friend RTTemporalFilterPrivate;
     RTTemporalFilter();
     virtual ~RTTemporalFilter();
-    void setNumChannels(int num_channels);
+    void initialize(int filter_size,float *filter_weights,int num_channels);
     void addData(float *data);
-
+    void getFilteredData(float *filtered_data,int timepoint);
 private:
    RTTemporalFilterPrivate *d;
 };
