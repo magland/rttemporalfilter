@@ -22,7 +22,6 @@ RTTemporalFilter::RTTemporalFilter()
     d->m_filter_size=0;
     d->m_filter_weights=0;
     d->m_data_index=0;
-    d->m_index=0;
     d->m_tmp=0;
 }
 
@@ -42,7 +41,7 @@ void RTTemporalFilter::initialize(int filter_size, float *filter_weights, int nu
         d->m_filter_weights[ii]=filter_weights[ii];
     }
     d->m_num_channels=num_channels;
-    if (d->m_num_channels) free(d->m_num_channels);
+    if (d->m_data) free(d->m_data);
     d->m_data=(float *)malloc(sizeof(float)*d->m_num_channels*d->m_filter_size);
     for (int i=0; i<d->m_num_channels*d->m_filter_size; i++) {
         d->m_data[i]=0;
@@ -74,7 +73,7 @@ void RTTemporalFilter::addData(float *data)
 void RTTemporalFilter::getFilteredData(float *filtered_data, int timepoint)
 {
     for (int i=0; i<d->m_num_channels; i++) {
-        filtered_data[i]=d->m_filtered_data.value(ch+timepoint*d->m_num_channels);
+        filtered_data[i]=d->m_filtered_data.value(i+timepoint*d->m_num_channels);
     }
 }
 

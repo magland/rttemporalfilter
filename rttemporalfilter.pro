@@ -20,3 +20,9 @@ SOURCES += main.cpp \
 
 HEADERS += \
     rttemporalfilter.h
+
+INCLUDEPATH += mdaio
+DEPENDPATH += mdaio
+VPATH += mdaio
+HEADERS += mdaio.h
+SOURCES += mdaio.cpp

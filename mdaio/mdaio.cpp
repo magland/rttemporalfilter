@@ -1,5 +1,31 @@
 #include "mdaio.h"
-#include "cvcommon.h"
+
+FILE *jfopen(const char *path,const char *mode) {
+    //printf("jfopen.\n");
+    FILE *F=fopen(path,mode);
+    if (!F) return 0;
+//	num_files_open++;
+    return F;
+}
+
+void jfclose(FILE *F) {
+    //printf("jfclose.\n");
+    if (!F) return;
+    fclose(F);
+//	num_files_open--;
+}
+
+int jfread(void *data,size_t sz,int num,FILE *F) {
+    int ret=fread(data,sz,num,F);
+//	num_bytes_read+=ret;
+    return ret;
+}
+
+int jfwrite(void *data,size_t sz,int num,FILE *F) {
+    int ret=fwrite(data,sz,num,F);
+//	num_bytes_written+=ret;
+    return ret;
+}
 
 int mda_read_header(struct MDAIO_HEADER *HH,FILE *input_file) {
 	int num_read=0;
