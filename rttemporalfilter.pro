@@ -16,13 +16,13 @@ CONFIG   -= app_bundle
 
 TEMPLATE = app
 SOURCES += main.cpp \
-    rttemporalfilter.cpp
+    rttemporalfilter.cpp get_command_line_params.cpp
 
 HEADERS += \
-    rttemporalfilter.h
+    rttemporalfilter.h get_command_line_params.h
 
 INCLUDEPATH += mdaio
 DEPENDPATH += mdaio
 VPATH += mdaio
-HEADERS += mdaio.h
-SOURCES += mdaio.cpp
+HEADERS += mdaio.h mda.h usagetracking.h
+SOURCES += mdaio.cpp mda.cpp usagetracking.cpp
